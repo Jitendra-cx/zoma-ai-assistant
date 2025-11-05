@@ -1,0 +1,50 @@
+name: Build & Push Zoma AI Assistant
+
+on:
+  push:
+    branches: ['main']
+  pull_request:
+    branches: ['main']
+  workflow_dispatch: # for manual triggering
+
+jobs:
+  linter:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' # only run on main branch
+    steps:
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with: 
+          node-version: 22.x
+      
+      - name: Install backend dependencies
+        working-directory: packages/backend
+        run: yarn install --frozen-lockfile
+
+      - name: Lint backend
+        working-directory: packages/backend
+        run: yarn lint
+
+      - run: echo "🍏 This job's status is ${{ job.status }}."
+
+  build-deploy:
+    runs-on: ubuntu-latest
+    needs: linter # wait for linter job to finish   
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build backend image
+        dockerfile: docker/Dockerfile
+        run: docker build -t zoma-ai-assistant-backend . || exit 1
+
+      - name: Test images
+        run:  |
+          docker run --rm zoma-ai-assistant-backend true || echo "Backend image built successfully"

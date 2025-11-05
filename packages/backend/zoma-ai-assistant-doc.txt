@@ -1,0 +1,213 @@
+# Challenge 2: AI Assistant Infrastructure Design
+
+## Context
+
+Zoma is building an AI-powered text enhancement feature similar to Jira/Confluence AI assistants. Users can enhance, transform, or manipulate text in any text field throughout the application using AI.
+
+This feature will be used across multiple contexts:
+- Opportunity descriptions
+- Project notes
+- Table cells with text content
+- Comments and collaboration areas
+- Custom fields
+
+---
+
+## User Experience Flow
+
+### Step-by-Step Interaction
+
+1. **User has text in a field** (e.g., "Project requirements for CRM implementation")
+
+2. **User clicks "Enhance with AI" button** next to the text field
+
+3. **Floating AI panel appears** positioned near the text field with:
+   - Current text preview (first 100 chars)
+   - List of AI actions
+
+4. **Available AI Actions:**
+   - **Free Prompt:** User types custom instruction ("Make this more technical")
+   - **Improve with AI:** General enhancement and clarity improvements
+   - **Make Shorter:** Condense while keeping key points
+   - **Summarize:** Create brief summary
+   - **Fix Grammar:** Correct grammar and spelling
+   - **Change Tone:** Professional, casual, formal, etc.
+
+5. **User selects an action** (e.g., "Make Shorter")
+
+6. **AI generates response** with streaming text (word-by-word or chunk-by-chunk)
+
+7. **User sees the result** and can:
+   - **Approve:** Replace original text with AI result
+   - **Reject:** Discard AI result and close panel
+   - **Regenerate:** Try the same action again
+   - **Copy:** Copy AI result to clipboard
+   - **Edit & Approve:** Modify AI result before replacing original
+
+8. **Optional: Context toggles** (checkboxes to include extra context):
+   - Include opportunity details
+   - Include current tab/section data
+   - Include related cell/field data
+
+---
+
+## Your Task
+
+Design the complete infrastructure to support this AI assistant feature. Focus on the aspects you find most important.
+
+### Areas to Consider
+
+**Frontend Architecture:**
+- Component structure and hierarchy
+- State management for AI interactions
+- Real-time streaming UI implementation
+- Panel positioning and lifecycle
+- Error states and loading indicators
+- Multiple simultaneous AI sessions
+
+**Backend Architecture:**
+- API endpoints and request/response design
+- LLM integration patterns (OpenAI, Claude, Gemini)
+- Streaming implementation approach
+- Context assembly (how to gather and send relevant data)
+- Prompt engineering structure
+- Response validation and safety
+
+**System Design:**
+- Making it extensible for different text fields
+- Managing conversation history (if user does multiple actions)
+- Cancelling in-progress AI requests
+- Cost tracking and rate limiting
+- Caching strategies for repeated requests
+
+**Security & Performance:**
+- Authentication and authorization
+- Data privacy (what context is sent to AI)
+- Rate limiting per user/organization
+- Token usage optimization
+- Error handling and retry logic
+
+---
+
+## Deliverables
+
+Create a design document covering what you think is most important. Some suggestions:
+
+### 1. System Architecture Overview
+- High-level component diagram (can be ASCII art or description)
+- Data flow for typical AI interaction
+- Key technologies and why you chose them
+
+### 2. API Design
+- Endpoint definitions with HTTP methods
+- Request and response schemas (TypeScript interfaces or JSON)
+- WebSocket vs. Server-Sent Events vs. Long Polling decision
+- Error response formats
+
+### 3. Frontend Architecture
+- Component hierarchy and responsibilities
+- State management approach
+- Key TypeScript interfaces
+- Streaming UI implementation strategy
+
+### 4. Backend Architecture
+- LLM integration layer design
+- Context assembly logic (how to gather opportunity/tab/cell data)
+- Prompt engineering structure
+- Streaming response handling
+
+### 5. Key Design Decisions
+Document and justify:
+- Streaming approach
+- Context management strategy
+- Error handling patterns
+- Extensibility for new AI actions
+
+### 6. Security Considerations
+- How to handle sensitive data
+- Rate limiting strategy
+- Cost management
+- User permissions (who can use AI features)
+
+### 7. Open Questions & Trade-offs
+- What would you build for MVP vs. later?
+- What are the biggest technical challenges?
+- What assumptions did you make?
+
+---
+
+## What We're Looking For
+
+✅ **System Thinking:** How all pieces fit together  
+✅ **API Design:** Clear, RESTful, practical endpoints  
+✅ **Real-time Patterns:** Understanding of streaming data  
+✅ **Scalability:** Can this work for 1000s of users?  
+✅ **Security Awareness:** Data privacy and access control  
+✅ **Practical Trade-offs:** MVP vs. future enhancements  
+✅ **Communication:** Clear explanations of decisions  
+✅ **Extensibility:** Easy to add new AI actions or use in new places
+
+---
+
+## Suggested Structure
+
+```markdown
+# AI Assistant Infrastructure Design
+
+## 1. Executive Summary
+Brief overview of approach and key decisions
+
+## 2. System Architecture
+Component diagram and data flow
+
+## 3. API Design
+Endpoints, schemas, protocols
+
+## 4. Frontend Architecture  
+Components, state management, streaming
+
+## 5. Backend Architecture
+LLM integration, context assembly, prompts
+
+## 6. Security & Performance
+Auth, rate limiting, cost management
+
+## 7. Trade-offs & Future Work
+What's in/out of MVP, challenges
+
+## Appendix
+Code snippets, detailed schemas, etc.
+```
+
+---
+
+## Technology Assumptions
+
+You can assume Zoma uses:
+- React on frontend (but feel free to suggest alternatives)
+- Node.js backend
+- PostgreSQL database
+- AWS cloud infrastructure
+- LLM APIs (OpenAI, Claude, Gemini)
+
+But you're free to propose different approaches if you have strong reasoning.
+
+---
+
+## Notes
+
+- **No code implementation required** - focus on design
+- **Include pseudo-code** where it helps explain concepts
+- **Diagrams encouraged** (ASCII art, Mermaid, or any tool)
+- **Prioritize what matters** - you don't need to design every detail
+- **Explain your reasoning** - we want to understand your thinking
+
+---
+
+## Submission
+
+- **Format:** Markdown preferred (or Google Docs/Notion)
+- **Length:** No limit, but aim for clarity over comprehensiveness
+- **Include:** Any diagrams, schemas, or pseudo-code that helps
+
+**Good luck!** 🚀
