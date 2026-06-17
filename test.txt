@@ -1,2 +1,2 @@
 This is test file.
-HI buddy
+HI buddy A
