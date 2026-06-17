@@ -8,4 +8,4 @@ console.log("Initializing service with key...");
 const name = 'ai'
 name = 'update'
 
-console.hel('foo bar b')
+console.hel('foo bar')
