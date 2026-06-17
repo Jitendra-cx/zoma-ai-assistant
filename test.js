@@ -1,7 +1,7 @@
 // test.js
 // Classic security flaw: Hardcoded API keys or credentials
 const AWS_SECRET_KEY = "AKIAIOSFODNN7EXAMPLE/SECRETKEY/SHOULDNOTBEHERE";
-const github_token = "ghp_vulnerableTokenValue1234567890abcdefghg";
+const github_token = "ghp_vulnerableTokenValue1234567890abcdefghgp";
 
 console.log("Initializing service with key...");
 
