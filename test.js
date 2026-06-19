@@ -8,7 +8,7 @@ app.get('/run', (req, res) => {
     // 🚨 CRITICAL SECURITY FLAW: Remote Code Execution (RCE) via eval()
     eval(userInput); 
 
-console.lo('foo abcd')
+console.lo('foo abcde')
 
     res.send('Executed!');
 });
