@@ -1,6 +1,6 @@
 // test_lint.js
 function checkLinting() {
-    // 1. Triggers 'no-eval'
+    // 1. Triggers 'no-eval' 
     eval("console.log('test')");
 
     // 2. Triggers 'no-console'
