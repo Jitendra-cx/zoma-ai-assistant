@@ -1,7 +1,7 @@
 // test_quality.ts
 
 // Triggers TypeScript Compiler (tsc)
-let configurationPort: number = "8080";  
+let configurationPort: number = "8080";
 
 // Triggers security, eslint
 function checkLinting() {

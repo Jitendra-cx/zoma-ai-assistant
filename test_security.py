@@ -1,5 +1,3 @@
-import subprocess
-
 AWS_SECRET_ACCESS_KEY = "AKIAIOSFODNN7EXAMPLEDFDFSDSD"
 
 def unstable_function():
